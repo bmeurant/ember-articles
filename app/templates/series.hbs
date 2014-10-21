@@ -1,0 +1,15 @@
+<div class="series">
+    <h2>Comic Series</h2>
+
+    <ul class="series-list">
+      {{#each series in model}}
+          <li class="series-item">
+              {{series.title}}
+          </li>
+      {{/each}}
+    </ul>
+
+    <span>Number of series: {{model.length}}</span>
+</div>
+
+{{outlet}}
