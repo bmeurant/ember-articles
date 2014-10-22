@@ -1,15 +1,20 @@
 <div class="series">
     <h2>Comic Series</h2>
 
+    {{input type=text value=filter class="filter"}}
+    <button {{action "sort"}} {{bind-attr class=":sort sortAscending:asc:desc"}}></button>
+
     <ul class="series-list">
-      {{#each series in model}}
+      {{#each filteredModel}}
           <li class="series-item">
-              {{series.title}}
+            {{#link-to 'series.seriesItem' this title=title}}
+              {{title}}
+            {{/link-to}}
           </li>
       {{/each}}
     </ul>
 
-    <span>Number of series: {{model.length}}</span>
+    <span>Number of series: {{filteredModel.length}}</span>
 </div>
 
 {{outlet}}

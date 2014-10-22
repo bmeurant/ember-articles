@@ -6,6 +6,10 @@
 @import "/bower_components/bootstrap/less/scaffolding.less";
 @import "/bower_components/bootstrap/less/grid.less";
 @import "/bower_components/bootstrap/less/utilities.less";
+@import "/bower_components/bootstrap/less/forms.less";
+@import "/bower_components/bootstrap/less/buttons.less";
+@import "/bower_components/bootstrap/less/type.less";
+
 @import "/bower_components/bootstrap/less/mixins/clearfix.less";
 @import "/bower_components/bootstrap/less/mixins/grid-framework.less";
 @import "/bower_components/bootstrap/less/mixins/grid.less";
@@ -17,12 +21,29 @@
 @import "/bower_components/bootstrap/less/mixins/image.less";
 @import "/bower_components/bootstrap/less/mixins/center-block.less";
 @import "/bower_components/bootstrap/less/mixins/hide-text.less";
+@import "/bower_components/bootstrap/less/mixins/forms.less";
+@import "/bower_components/bootstrap/less/mixins/buttons.less";
+@import "/bower_components/bootstrap/less/mixins/opacity.less";
 
 @gray: #e5e5e5;
 
 .icon {
   font-family: FontAwesome;
   padding: 5px;
+}
+
+.btn-icon {
+  float: right;
+  padding: 2px;
+  line-height: 1;
+  margin-top: 10px;
+  border: none;
+  font-size: 25px;
+}
+
+.bordered-zone {
+  border: solid 1px @gray;
+  border-radius: 6px;
 }
 
 .app {
@@ -47,6 +68,33 @@
     .make-md-column(3);
     .make-xs-column(12);
 
+    .filter {
+      &:extend(.form-control);
+      display: inline-block;
+      width: 80%
+    }
+
+    .sort {
+      &:extend(.btn);
+      &:extend(.btn-default);
+      .btn-icon();
+
+      float: right;
+      margin-top: 3px;
+      background-color: @brand-primary;
+      color: @body-bg;
+
+        &.asc:before {
+          content: "\f0d7";
+          .icon();
+        }
+
+        &.desc:before {
+          content: "\f0d8";
+          .icon();
+        }
+    }
+
     .series-list {
       margin: 20px 0;
       padding-left: 0;
@@ -56,7 +104,6 @@
         border: solid 1px @gray;
         border-bottom: none;
         overflow: hidden;
-        padding: 10px;
 
         &:first-of-type {
           border-radius: 6px 6px 0 0;
@@ -67,7 +114,75 @@
           border-radius: 0 0 6px 6px;
         }
 
+        a {
+          text-align: left;
+          padding: 10px;
+          display: block;
+
+          &.active, &:hover {
+            background-color: @brand-primary;
+            color: @body-bg;
+            text-decoration: none;
+          }
+
+          &.add {
+            text-align: center;
+            color: @gray-light;
+            background-color: @gray-lighter;
+          }
+        }
+
       }
     }
+  }
+
+  .series-details {
+    .make-md-column(5);
+    .make-xs-column(12);
+    .bordered-zone();
+    background-color: @brand-primary;
+    text-align: center;
+
+    h3 {
+      color: @body-bg;
+      margin-top: 15px;
+      text-align: left;
+      margin-bottom: 13px;
+    }
+
+    .zone {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: @body-bg;
+      text-align: left;
+    }
+
+    .cover {
+      &:extend(.img-responsive);;
+      &:extend(.img-thumbnail);
+      height: 250px;
+      width: 190px;
+      padding: 10px;
+    }
+
+    .description {
+      .zone();
+      .bordered-zone();
+      .dl-horizontal();
+
+      dt {
+        text-align: left;
+        width: 120px;
+      }
+
+      dd {
+        margin-left: 130px;
+      }
+    }
+
+    .summary {
+      .zone();
+    }
+
   }
 }
