@@ -1,5 +1,4 @@
 //@import "/bower_components/bootstrap/less/bootstrap.less";
-
 @import "/bower_components/bootstrap/less/variables.less";
 @import "/bower_components/bootstrap/less/normalize.less";
 @import "/bower_components/bootstrap/less/type.less";
@@ -9,7 +8,6 @@
 @import "/bower_components/bootstrap/less/forms.less";
 @import "/bower_components/bootstrap/less/buttons.less";
 @import "/bower_components/bootstrap/less/type.less";
-
 @import "/bower_components/bootstrap/less/mixins/clearfix.less";
 @import "/bower_components/bootstrap/less/mixins/grid-framework.less";
 @import "/bower_components/bootstrap/less/mixins/grid.less";
@@ -29,7 +27,6 @@
 
 .icon {
   font-family: FontAwesome;
-  padding: 5px;
 }
 
 .btn-icon {
@@ -39,6 +36,19 @@
   margin-top: 10px;
   border: none;
   font-size: 25px;
+  width: 30px;
+}
+
+.btn-default {
+  color: @brand-primary;
+}
+
+.form-control {
+  color: #555;
+}
+
+.form-group {
+  margin-bottom: 2px;
 }
 
 .bordered-zone {
@@ -63,126 +73,201 @@
 
 .main {
   .make-row();
+}
 
-  .series {
-    .make-md-column(3);
-    .make-xs-column(12);
+.series {
+  .make-md-column(3);
+  .make-xs-column(12);
 
-    .filter {
-      &:extend(.form-control);
-      display: inline-block;
-      width: 80%
+  .filter {
+    &:extend(.form-control);
+    display: inline-block;
+    width: 80%
+  }
+
+  .sort {
+    &:extend(.btn);
+    &:extend(.btn-default);
+    .btn-icon();
+
+    float: right;
+    margin-top: 3px;
+    background-color: @brand-primary;
+    color: @body-bg;
+
+    &.asc:before {
+      content: "\f0d7";
+      .icon();
     }
 
-    .sort {
-      &:extend(.btn);
-      &:extend(.btn-default);
-      .btn-icon();
-
-      float: right;
-      margin-top: 3px;
-      background-color: @brand-primary;
-      color: @body-bg;
-
-        &.asc:before {
-          content: "\f0d7";
-          .icon();
-        }
-
-        &.desc:before {
-          content: "\f0d8";
-          .icon();
-        }
-    }
-
-    .series-list {
-      margin: 20px 0;
-      padding-left: 0;
-
-      .series-item {
-        list-style: none;
-        border: solid 1px @gray;
-        border-bottom: none;
-        overflow: hidden;
-
-        &:first-of-type {
-          border-radius: 6px 6px 0 0;
-        }
-
-        &:last-of-type {
-          border-bottom: solid 1px @gray;
-          border-radius: 0 0 6px 6px;
-        }
-
-        a {
-          text-align: left;
-          padding: 10px;
-          display: block;
-
-          &.active, &:hover {
-            background-color: @brand-primary;
-            color: @body-bg;
-            text-decoration: none;
-          }
-
-          &.add {
-            text-align: center;
-            color: @gray-light;
-            background-color: @gray-lighter;
-          }
-        }
-
-      }
+    &.desc:before {
+      content: "\f0d8";
+      .icon();
     }
   }
 
-  .series-details {
-    .make-md-column(5);
-    .make-xs-column(12);
-    .bordered-zone();
-    background-color: @brand-primary;
-    text-align: center;
+  .series-list {
+    margin: 20px 0;
+    padding-left: 0;
 
-    h3 {
-      color: @body-bg;
-      margin-top: 15px;
-      text-align: left;
-      margin-bottom: 13px;
-    }
+    .series-item {
+      list-style: none;
+      border: solid 1px @gray;
+      border-bottom: none;
+      overflow: hidden;
 
-    .zone {
-      margin-top: 10px;
-      padding: 10px;
-      background-color: @body-bg;
-      text-align: left;
-    }
+      &:first-of-type {
+        border-radius: 6px 6px 0 0;
+      }
 
-    .cover {
-      &:extend(.img-responsive);;
-      &:extend(.img-thumbnail);
-      height: 250px;
-      width: 190px;
-      padding: 10px;
-    }
+      &:last-of-type {
+        border-bottom: solid 1px @gray;
+        border-radius: 0 0 6px 6px;
+      }
 
-    .description {
-      .zone();
-      .bordered-zone();
-      .dl-horizontal();
-
-      dt {
+      a {
         text-align: left;
-        width: 120px;
+        padding: 10px;
+        display: block;
+
+        &.active, &:hover {
+          background-color: @brand-primary;
+          color: @body-bg;
+          text-decoration: none;
+        }
+
+        &.add {
+          text-align: center;
+          color: @gray-light;
+          background-color: @gray-lighter;
+        }
       }
 
-      dd {
-        margin-left: 130px;
-      }
+    }
+  }
+}
+
+.series-details {
+  .make-md-column(5);
+  .make-xs-column(12);
+  .bordered-zone();
+  background-color: @brand-primary;
+  text-align: center;
+
+  h3 {
+    color: @body-bg;
+    margin-top: 15px;
+    text-align: left;
+    margin-bottom: 13px;
+  }
+
+  .edit {
+    &:extend(.btn);
+    &:extend(.btn-default);
+    &:extend(.btn-icon);
+    &:before {
+      content: "\f040";
+      .icon();
     }
 
-    .summary {
-      .zone();
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .zone {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: @body-bg;
+    text-align: left;
+  }
+
+  .cover {
+    &:extend(.img-responsive);
+    &:extend(.img-thumbnail);
+    height: 250px;
+    width: 190px;
+    padding: 10px;
+  }
+
+  .description {
+    .zone();
+    .bordered-zone();
+    .dl-horizontal();
+
+    dt {
+      text-align: left;
+      width: 120px;
     }
 
+    dd {
+      margin-left: 130px;
+    }
+  }
+
+  .summary {
+    .zone();
+    .bordered-zone();
+    margin-bottom: 15px;
+  }
+
+}
+
+form {
+  .form-horizontal();
+
+  input {
+    &:extend(.form-control);
+  }
+
+  textarea {
+    &:extend(.form-control);
+    &:extend(textarea.form-control);
+  }
+
+  .submit {
+    &:extend(.btn);
+    &:extend(.btn-success);
+    &:extend(.btn-icon);
+    &:before {
+      content: "\f00c";
+      .icon();
+    }
+    margin-left: 5px;
+  }
+
+  .cancel {
+    &:extend(.btn);
+    &:extend(.btn-danger);
+    &:extend(.btn-icon);
+    &:before {
+      content: "\f00d";
+      .icon();
+    }
+  }
+
+  .title, .scriptwriter, .illustrator, .publisher {
+    &:extend(.form-group);
+    .clearfix();
+
+    label {
+      .make-sm-column(3);
+      padding-top: 7px;
+    }
+
+    .control {
+      .make-sm-column(9);
+    }
+  }
+
+  .title {
+    margin-left: 0;
+
+    input {
+      margin: 10px 0 10px;
+      width: 80%;
+      text-align: left;
+      font-size: 24px;
+    }
   }
 }
