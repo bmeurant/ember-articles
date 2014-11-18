@@ -7,6 +7,7 @@ var SeriesItem = DS.Model.extend({
     publisher           : DS.attr('string'),
     coverName           : DS.attr('string', {defaultValue: 'default.jpg'}),
     summary             : DS.attr('string'),
+    albums              : DS.hasMany('album', {async: true}),
     coverUrl: function() {
         return '/assets/images/series/covers/' + this.get('coverName');
     }.property('coverName')
@@ -20,8 +21,9 @@ SeriesItem.reopenClass({
     illustrator: 'Juanjo Guarnido',
     publisher: 'Dargaud',
     coverName: 'blacksad.jpg',
-    summary: 'Private investigator John Blacksad is up to his feline ears in mystery, digging into the backstories behind murders, child abductions, and nuclear secrets. Guarnido\'s sumptuously painted pages and rich cinematic style bring the world of 1950s America to vibrant life, with Canales weaving in fascinating tales of conspiracy, racial tension, and the "red scare" Communist witch hunts of the time. Guarnido reinvents anthropomorphism in these pages, and industry colleagues no less than Will Eisner, Jim Steranko, and Tim Sale are fans! Whether John Blacksad is falling for dangerous women or getting beaten to within an inch of his life, his stories are, simply put, unforgettable'
-}, {
+    summary: 'Private investigator John Blacksad is up to his feline ears in mystery, digging into the backstories behind murders, child abductions, and nuclear secrets. Guarnido\'s sumptuously painted pages and rich cinematic style bring the world of 1950s America to vibrant life, with Canales weaving in fascinating tales of conspiracy, racial tension, and the "red scare" Communist witch hunts of the time. Guarnido reinvents anthropomorphism in these pages, and industry colleagues no less than Will Eisner, Jim Steranko, and Tim Sale are fans! Whether John Blacksad is falling for dangerous women or getting beaten to within an inch of his life, his stories are, simply put, unforgettable',
+    albums: [1, 2, 3, 4, 5]
+    }, {
     id: 2,
     title: 'The Killer',
     scriptwriter: 'Luc Jacamon',
