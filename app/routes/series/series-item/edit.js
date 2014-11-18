@@ -14,6 +14,11 @@ export default Ember.Route.extend({
     cancel: function () {
       this.modelFor('series.seriesItem.edit').rollback();
       this.transitionTo('series.seriesItem');
+    },
+
+    willTransition: function () {
+      this.modelFor('series.seriesItem.edit').rollback();
+      return true;
     }
   }
 });
