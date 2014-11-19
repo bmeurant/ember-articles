@@ -10,6 +10,7 @@ Router.map(function() {
     this.route('seriesItem', { path: '/:seriesItem_id' }, function () {
       this.route('edit');
     });
+    this.route('create');
   });
 });
 

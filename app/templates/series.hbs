@@ -12,6 +12,9 @@
             {{/link-to}}
           </li>
       {{/each}}
+        <li class="series-item">
+          {{#link-to 'series.create' class="add"}}{{/link-to}}
+        </li>
     </ul>
 
     <span>Number of series: {{filteredModel.length}}</span>
