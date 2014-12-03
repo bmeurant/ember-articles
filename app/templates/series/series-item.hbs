@@ -2,8 +2,8 @@
 
 <div class="series-albums">
     <ul>
-      {{#each albums}}
-        {{partial 'partials/albumItem'}}
+      {{#each album in albums}}
+        {{render 'partials/albumItem' album}}
       {{/each}}
     </ul>
 </div>
