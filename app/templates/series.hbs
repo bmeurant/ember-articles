@@ -5,10 +5,10 @@
     <button {{action "sort"}} {{bind-attr class=":sort sortAscending:asc:desc"}}></button>
 
     <ul class="series-list">
-      {{#each filteredModel}}
+      {{#each series in filteredModel}}
           <li class="series-item">
-            {{#link-to 'series.seriesItem' this title=title}}
-              {{title}}
+            {{#link-to 'series.seriesItem' series title=series.title}}
+              {{series.title}}
             {{/link-to}}
           </li>
       {{/each}}
